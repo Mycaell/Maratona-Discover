@@ -1,7 +1,11 @@
 /*Global*/
 :root {
     --dark-blue: #30323a;
+    /*
     --color-background-card-total: #49aa26;
+    */
+    --color-background-card-total: #468b37;
+
     --light-green:  #3dd703;
     --red: #e92929;
 }   
@@ -20,11 +24,13 @@ html {
 body {
     background: #f0f2f5;
     font-family: 'Poppins', sans-serif;
+    background: #1aff0011;
 }
 
 .container {
     width: min(90vw, 800px);
     margin: auto;
+
 }
 
 .sr-only {
@@ -51,7 +57,11 @@ h2 {
 
 /*Header*/
 header {
- background:#2d5a22;
+    background: var(--color-background-card-total);
+ 
+background:#2d5a22;
+
+
  padding: 3rem 0 4rem;
  justify-content: center;
  text-align: center;
@@ -77,7 +87,7 @@ a:hover {
 .button.new {
   display: inline-block;
   margin-bottom: 0.5rem;
-  padding: 0 0 0 72%;
+  padding: 0 0 0 75%;
 }
 
 
@@ -147,6 +157,9 @@ button:hover{
 
 .card.total {
     background: var(--color-background-card-total);
+
+
+
     color: white;
 }
 
@@ -177,7 +190,7 @@ table thead th {
 table tbody td {
     background: white;
     padding: 1rem 2rem;
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 
@@ -205,6 +218,11 @@ table tbody tr td:last-child {
 
 .end-table  td:last-child{
     border-radius: 0 1rem 5rem 0;
+}
+
+
+.end-table:hover {
+    background: none;
 }
 
 
