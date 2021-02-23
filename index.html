@@ -32,7 +32,7 @@
                     <img src="./assets/income.svg" alt="Imagem de entradas">    
                 </h3>
 
-                <p>R$ 5.000,00</p>
+                <p id="income-display">0,00</p>
             </div>
 
             <div class="card">
@@ -41,27 +41,29 @@
                     <img src="./assets/expense.svg" alt="Imagem de entradas">    
                 </h3>
     
-                <p>R$ 2.000,00</p>
+                <p id="expense-display">0,00</p>
             </div>
 
-            <div class="card total class="description"">
+            <div class="card total">
                 <h3>
                     <span>Total</span>
                     <img src="./assets/total.svg" alt="Imagem de entradas">    
                 </h3>
 
-                <p>R$ 3.000,00</p>
+                <p id="total-display">0,00</p>
+
+                <small id="alert-negative">Sua situação financeira está negativa!</small>
             </div>
 
         </section>
 
+        
         <section id="transaction">
+            <h2>Transações</h2>
+           
 
-                <h2>Transações</h2>
-               
-                
-                <a href="#" onclick="Modal.open()" class="button new">+ Nova Transação</a>
-
+            <a href="#" onclick="Modal.open()" class="button new" title="Adicionar nova transação" >+ Nova Transação</a>
+            
             <table id="data-table">
                 <thead>
                     <tr>
@@ -73,40 +75,8 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td class="description">Luz</td>
-                        <td class="expense">- R$ 500,00</td>
-                        <td class="date">23/01/2021</td>
-                        <td>
-                            <img src="./assets/minus.svg" alt="Remover transação">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="description">Cricação website</td>
-                        <td class="income">- R$ 5.000,00</td>
-                        <td class="date">25/05/2021</td>
-                        <td>
-                            <img src="./assets/minus.svg" alt="Remover transação">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="description">Internet</td>
-                        <td class="expense">- R$ 300,00</td>
-                        <td class="date">15/03/2021</td>
-                        <td>
-                            <img src="./assets/minus.svg" alt="Remover transação">
-                        </td>
-                    </tr>
-
-                    <tr class="end-table">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        
-                    </tr>
+                    
+                 
 
                 </tbody>
 
@@ -121,7 +91,7 @@
                 <div id="form">
                     <h2>Nova transação</h2>
                     
-                    <form action="">
+                    <form action="" onsubmit="Form.submit(event)">
                         <div class="input-group">
                             <label class="sr-only" for="description">Descrição</label>
                             <input type="text" id="description" name="description" placeholder="Descrição">
@@ -155,17 +125,7 @@
     </footer>
 
 
-    <script>
-        const Modal = {
-            open(){
-                document.querySelector('.modal-overlay').classList.add('active')
-            },
-            close(){
-                document.querySelector('.modal-overlay').classList.remove('active')
-            }
-
-        }
-    </script>
+    <script src="./scripts.js"></script>
 
 </body>
 

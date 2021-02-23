@@ -1,4 +1,4 @@
-/*Global*/
+/*Global ==================*/
 :root {
     --dark-blue: #30323a;
     /*
@@ -46,7 +46,7 @@ body {
 }
 
 
-/*Titles*/
+/*Titles ==================*/
 h2 {
     margin-top: 1rem;
     margin-bottom: 0.8rem;
@@ -55,7 +55,7 @@ h2 {
 }
 
 
-/*Header*/
+/*Header ==================*/
 header {
     background: var(--color-background-card-total);
  
@@ -73,7 +73,7 @@ background:#2d5a22;
     font-weight: 100;
 }
 
-/*Links and Buttons*/
+/*Links and Buttons ==================*/
 a {
     color:var(--color-background-card-total);
     text-decoration: none;
@@ -85,10 +85,10 @@ a:hover {
 
 
 .button.new {
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  padding: 0 0 0 75%;
+    display: inline-block;
+    margin-bottom: 0.5rem;
 }
+
 
 
 
@@ -130,7 +130,7 @@ button:hover{
 
 
 
-/*Card*/
+/*Card ==================*/
 .card {
     background: white;
     padding: 1.5rem 2rem;
@@ -158,20 +158,29 @@ button:hover{
 .card.total {
     background: var(--color-background-card-total);
 
-
-
     color: white;
 }
 
+.card.total.negative {
+    background: var(--red);
 
-/*Table*/
-#transaction {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
 }
 
+#alert-negative{
+    visibility: hidden;
+}
+
+.card.total.negative #alert-negative {
+    visibility: visible;
+    background: var(--red);
+}
+
+
+/*Table ==================*/
+
 #data-table {
+    display: block;
+    overflow-x: auto;
     width: 100%;
     border-spacing: 0 0.5rem;
     color: var(--dark-blue);
@@ -225,10 +234,6 @@ table tbody tr td:last-child {
     background: none;
 }
 
-
-
-
-
 table tr:hover {
     background: var(--color-background-card-total);
 }
@@ -250,7 +255,7 @@ td.date {
     color: #7a7a85;
 }
 
-/*Modal*/
+/*Modal ==================*/
 .modal-overlay {
     width: 100%;
     height: 100%;
@@ -276,17 +281,16 @@ td.date {
 }
 
 .modal {
+    width: 95%;
+    max-width: 500px;
     background: #f0f2f5;
-    padding: 2.4rem;
+    padding: 1.5rem;
     position: relative;
 
     z-index: 1;
 }
 
-/*Form*/
-#form {
-    max-width: 500px;
-}
+/*Form ==================*/
 
 #form h2 {
     margin-top: 0;
@@ -309,6 +313,7 @@ td.date {
 }
 
 .input-group.actions {
+    margin-top: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -320,7 +325,7 @@ td.date {
 }
 
 
-/*Footer*/
+/*Footer ==================*/
 footer {
     text-align: center;
     padding: 2rem 0 1rem;
@@ -329,7 +334,7 @@ footer {
 }
 
 
-/*Responsive*/
+/*Responsive ==================*/
 @media (min-width: 800px){
     html{
         font-size: 87.5%;
@@ -343,11 +348,15 @@ footer {
         
     }
 
-
+    /*
     .button.new {
-        padding: 0 0 0 83%;
+        padding: 0 0 0 80%;
       }
+      */
 
+      #data-table {
+          display: table;
+      }
 
 
 }
