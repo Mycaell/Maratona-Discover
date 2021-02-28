@@ -133,7 +133,7 @@ button:hover{
 /*Card ==================*/
 .card {
     background: white;
-    padding: 1.5rem 2rem;
+    padding: 0.5rem 1rem;
     border-radius: 1rem;
     margin-bottom: 1rem;
 
@@ -296,11 +296,25 @@ td.date {
     margin-top: 0;
 }
 
-#form form input {
-    border: none;
+#form form input.empty{
+    border: solid;
+    border-width: 1px;
+    border-color: var(--red);
     border-radius: 0.3rem;
+
+    background-color: rgb(252, 224, 224);
+
     padding: 0.8rem;
 
+    width: 100%;
+
+}
+
+#form form input {
+    /*border: none;*/
+    border-style: none;
+    border-radius: 0.3rem;
+    padding: 0.8rem;
     width: 100%;
 }
 

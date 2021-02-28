@@ -4,6 +4,8 @@ const Modal = {
     },
 
     close(){
+        Form.clearFields()
+        Form.removeAllEmptyAlert()
         document.querySelector('.modal-overlay').classList.remove('active')
     }
 
@@ -95,10 +97,12 @@ const DOM = {
         document.getElementById('expense-display').innerHTML = Utils.formatCurrency(Transaction.expenses())
         document.getElementById('total-display').innerHTML = Utils.formatCurrency(Transaction.total())
         
+        const cardTotal = document.querySelector('.card.total')
+
         if(Transaction.total() < 0){
-            document.querySelector('.card.total').classList.add('negative')
+            cardTotal.classList.add('negative')
         }else{
-            document.querySelector('.card.total').classList.remove('negative')
+            cardTotal.classList.remove('negative')
         }
 
     },
@@ -110,14 +114,12 @@ const DOM = {
     addAlertRow(){
 
         // contains only end row
-        console.log(this.transactionsContainer.childElementCount)
         if(this.transactionsContainer.childElementCount === 0){
-            console.log("exibir alert row")
             const tr = document.createElement('tr')
             tr.innerHTML = `
-          
-            <td width="100%" >Você não realizou nenhuma transação até o momento!</td>
-
+                <td width="100%">
+                    <h4>Você não realizou nenhuma transação até o momento!</h4>
+                </td>
             `
             DOM.transactionsContainer.appendChild(tr)
         }
@@ -188,12 +190,53 @@ const Form = {
         }
     },
 
+    removeAllEmptyAlert() {
+            
+        document.getElementById('description').classList.remove('empty')
+           
+        document.getElementById('amount').classList.remove('empty')
+            
+        document.getElementById('date').classList.remove('empty')
+        
+    },
+    
+    removeEmptyAlert(IDInput) {
+        document.getElementById(IDInput).classList.remove('empty')
+    },
+
     validateFields() {
         const {description, amount, date} = Form.getValues()
+        
+        let empty = false
 
-        if(description.trim() === "" || amount.trim() === "" || date.trim() === ""){
+        if(description.trim() === ""){
+            document.getElementById('description').classList.add('empty')
+            empty = true
+        }else{
+            this.removeEmptyAlert("description")
+        }
+        
+        if(amount.trim() === ""){
+            document.getElementById('amount').classList.add('empty')
+            empty = true
+        }else{
+            this.removeEmptyAlert("amount")
+        }
+        
+        if(date.trim() === ""){
+            document.getElementById('date').classList.add('empty')
+            empty = true
+        }else{
+            this.removeEmptyAlert("date")
+        }
+
+        
+        if(empty){
             throw new Error("Por favor, preencha todos os campos.")
         }
+
+
+
     },
     
     formatValues() {
@@ -242,12 +285,14 @@ const App = {
         Transaction.all.forEach(function(transaction, index){
             DOM.addTransaction(transaction, index)
         })
+        
         DOM.addAlertRow()
         DOM.addEndRow()
 
         DOM.updateBalance()
 
         Storage.set(Transaction.all)
+
     },
 
     reload() {
